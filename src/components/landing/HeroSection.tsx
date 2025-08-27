@@ -8,6 +8,17 @@ const HeroSection = () => {
   return (
     <MaxWidthSection className="  mt-6">
       <div className="relative w-full flex justify-center items-center flex-col gap-y-3">
+        <div
+          className="absolute inset-0 z-0 pointer-events-none"
+          style={{
+            backgroundImage: `
+        repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(75, 85, 99, 0.08) 20px, rgba(75, 85, 99, 0.08) 21px),
+        repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(107, 114, 128, 0.06) 30px, rgba(107, 114, 128, 0.06) 31px),
+        repeating-linear-gradient(60deg, transparent, transparent 40px, rgba(55, 65, 81, 0.05) 40px, rgba(55, 65, 81, 0.05) 41px),
+        repeating-linear-gradient(150deg, transparent, transparent 35px, rgba(31, 41, 55, 0.04) 35px, rgba(31, 41, 55, 0.04) 36px)
+      `,
+          }}
+        />
         <div className="px-4 py-2 rounded-full bg-emerald-600 text-white text-sm font-semibold">
           First version is coming soon
         </div>
@@ -68,12 +79,15 @@ const HeroSection = () => {
             </Button>
           </div>
         </div>
-        <div className="relative w-full h-[700px] ">
-          <img
-            className="w-full h-full object-contain "
-            alt="dashboard"
-            src="/dashboard-preview.png"
-          />
+        <div className="relative mt-6 flex justify-center items-center p-2 md:p-4 w-fit h-fit border-px border-emerald-950  ">
+          <div className="absolute -inset-0.5 rounded-lg bg-gradient-to-bl from-gray-900 via-emerald-700 to-gray-900  "></div>
+          <div className="relative flex  w-fit h-fit items-center justify-center  rounded-lg  text-slate-300">
+            <img
+              className="w-full h-full object-contain "
+              alt="dashboard"
+              src="/dashboard-preview.png"
+            />
+          </div>
         </div>
       </div>
     </MaxWidthSection>
