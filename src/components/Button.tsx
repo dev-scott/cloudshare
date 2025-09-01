@@ -8,7 +8,7 @@ type BaseButtonProps = {
   isLoading?: boolean;
   className?: string;
   variant?: ButtonVariants;
-  onClick?: (() => void) | void | Promise<void> | undefined;
+  onClick?: () => void;
 };
 
 type ButtonVariants =

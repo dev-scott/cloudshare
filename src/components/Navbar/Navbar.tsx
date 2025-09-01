@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MaxWidthSection from "../MaxWidthSection";
 import Button from "../Button";
 import { Menu } from "lucide-react";
 import { Box, Divider, Drawer } from "@mui/material";
+import { useClerk, useUser } from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -11,11 +13,23 @@ const Navbar = () => {
     setOpenMenu(open);
   };
 
+  const { openSignIn, openSignUp } = useClerk();
+  const { isSignedIn } = useUser();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isSignedIn) {
+      navigate("/dashboard");
+    }
+  }, [isSignedIn]);
+
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
       <Box className="px-4 py-2">
-        <Button variant="ghost">Login</Button>
-        <Button variant="primary" className="mt-3">
+        <Button variant="ghost" onClick={openSignIn}>
+          Login
+        </Button>
+        <Button variant="primary" className="mt-3" onClick={openSignUp}>
           Create account
         </Button>
       </Box>
@@ -45,8 +59,12 @@ const Navbar = () => {
           </Drawer>
         </div>
         <div className=" hidden md:flex justify-center items-center gap-x-4">
-          <Button variant="ghost">Login</Button>
-          <Button variant="primary">Create account</Button>
+          <Button variant="ghost" onClick={openSignIn}>
+            Login
+          </Button>
+          <Button variant="primary" onClick={openSignUp}>
+            Create account
+          </Button>
         </div>
       </div>
     </MaxWidthSection>
