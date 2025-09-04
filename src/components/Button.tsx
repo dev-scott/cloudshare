@@ -49,7 +49,7 @@ const Button = ({
       type={type}
       onClick={onClick}
     >
-      {isLoading ? <span>Loading</span> : children}
+      {isLoading ? <span>Loading...</span> : children}
     </button>
   );
 };
